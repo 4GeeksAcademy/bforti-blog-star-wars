@@ -1,3 +1,13 @@
 /* 
     General Styles
 */
+.my-card{
+    min-width: 200px;
+    
+
+}
+.carrusel{
+    overflow-x: scroll ;
+    height: auto;
+    width: 100%;
+}
