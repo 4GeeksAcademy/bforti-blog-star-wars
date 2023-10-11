@@ -1,13 +1,30 @@
 /* 
     General Styles
 */
-.my-card{
-    min-width: 200px;
-    
+.card{
+    min-width: 350px;
+    max-width: 550px;
+    max-height: auto;
 
+    
+}
+.foto{
+    max-height: 300px;
+    max-width: auto;
+    width: auto;
+    margin: 5px;
+    
+}
+.small{
+    font-size: 10px;
+    font-family:'Times New Roman', Times, serif;
+    margin:0px
 }
 .carrusel{
     overflow-x: scroll ;
-    height: auto;
+    height:auto;
     width: 100%;
+}
+.card-body{
+    max-height: 200px;
 }

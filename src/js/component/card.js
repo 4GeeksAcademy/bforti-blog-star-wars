@@ -1,22 +1,81 @@
-import React, { Component } from "react";
+import React, { Component, useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 export const Card = ({ item }) => {
-	let {properties}=item
+	let { store } = useContext(Context)
+	let { properties, description } = item
+	let urlCharacters=`https://starwars-visualguide.com/assets/img/characters/${item.uid}.jpg`
+	let urlPLanets=`https://starwars-visualguide.com/assets/img/planets/${item.uid}.jpg`
+	let urlVehicles=`https://starwars-visualguide.com/assets/img/vehicles/${item.uid}.jpg`
+	let urlAux=""
+	let info=""
+	let info2=""
+	let info3=""
+	let nature=""
+	if(description=="A person within the Star Wars universe") {urlAux=urlCharacters
+		nature="characters"
+		info=`hair-color=${properties.hair_color}`
+		info2=`eye-color=${properties.eye_color}`
+		info3=`gender=${properties.gender}`
+		
+	}
+	else if(description=="A planet."){urlAux=urlPLanets
+		nature="planets"
+		info=`population=${properties.population}`
+		info2=`climate=${properties.climate}`
+		info3=`terrain=${properties.terrain}`
+	}
+	else{
+		urlAux=urlVehicles
+		nature="vehicles"
+	    info=`Vehicle class=${properties.vehicle_class}`
+		info2=`model=${properties.model}`
+		info3=`cost in credits=${properties.cost_in_credits}`
 
-	return (
+	}
+	
 
-		<div className="my-card card" >
-			<img src={`https://starwars-visualguide.com/assets/img/characters/${item.uid}.jpg` }className="card-img-top" alt="..." />
-			<div className="card-body">
-				<h5 className="card-title">{properties.name}</h5>
-				<p className="card-text">hair-color={properties.hair_color}</p>
-				<p className="card-text">eye-color={properties.eye_color}</p>
-                <p className="card-text">gender={properties.gender}</p>
-              
 
-				<Link to={`/characters/${item._id}`} className="btn btn-primary">Detalle</Link>
+
+
+		return (
+			<>
+			
+			<div className="my-card card container mx-2 my-1" >
+					<img src={urlAux} className="card-img-top foto" alt="..." />
+					<div className="card-body container">
+					<h5 className="card-title m-0">{properties.name}</h5>
+						<p className="card-text small">{info}</p>
+						<p className="card-text small">{info2}</p>
+						<p className="card-text small">{info3}</p>
+
+
+						<Link to={`/${nature}/${item._id}`} className="btn btn-primary py-0">Detalle</Link>
+					</div>
 			</div>
-		</div>
-	)
+			
+			</>
+
+			
+
+
+			
+
+
+
+
+		)
+	
+		
+	
+
+
+
+
+
 }
+
+
+
