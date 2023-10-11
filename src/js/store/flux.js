@@ -91,6 +91,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error)
 
 				}
+			},
+
+			addFav:  (añadirFav)=>{
+
+				let existe=getStore().favoritos.some((item)=>item._id==añadirFav._id)
+				if(existe){
+				let newL = getStore().favoritos.filter((item)=>item._id!= añadirFav._id)
+					setStore({favoritos:newL})
+				}
+				else{
+					setStore({favoritos:[...getStore().favoritos, añadirFav]})
+
+				}
+
+
+				
+
+
+
 			}
 
 		}

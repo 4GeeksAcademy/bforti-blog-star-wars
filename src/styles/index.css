@@ -1,6 +1,7 @@
 /* 
     General Styles
 */
+
 .card{
     min-width: 350px;
     max-width: 550px;
@@ -27,4 +28,7 @@
 }
 .card-body{
     max-height: 200px;
+}
+.cora{
+    color: #ffdd00;
 }

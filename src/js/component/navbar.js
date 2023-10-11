@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+
 
 export const Navbar = () => {
+	let { store } = useContext(Context)
+
 	return (
-		<nav className="navbar navbar-light bg-light mb-3 px-2">
-			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-			</Link>
-			<div className="ml-auto btn-group px-2">
-				<button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-					Favoritos
+		<nav className="navbar navbar-light bg-light mb-3 px-4 border rounded">
+			
+				<span className="navbar-brand mb-0 h1">starwars</span>
+		
+			<div className="btn-group">
+				<button type="button" className="btn btn-outline-success dropdown-toggle" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+					Favoritos {store.favoritos.length}
 				</button>
-				<ul className="dropdown-menu">
-					<li><a className="dropdown-item" href="#">Dropdown link</a></li>
-					<li><a className="dropdown-item" href="#">Dropdown link</a></li>
+				<ul className="dropdown-menu dropdown-menu-lg-end">
+					{store.favoritos.map((item) => {
+						return(
+						<li
+						key={item._id}><button
+							className="dropdown-item"
+							type="button">{item.properties.name}
+						</button></li>
+						)
+						
+
+					})}
+
+
 				</ul>
-
-
-
-
 			</div>
+
 		</nav>
 	);
 };
