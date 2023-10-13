@@ -4,7 +4,10 @@ import { Context } from "../store/appContext";
 
 
 export const Navbar = () => {
-	let { store } = useContext(Context)
+	
+	let { store, actions } = useContext(Context)
+	
+
 
 	return (
 		<nav className="navbar navbar-light bg-light mb-3 px-4 border rounded">
@@ -19,10 +22,17 @@ export const Navbar = () => {
 					{store.favoritos.map((item) => {
 						return(
 						<li
-						key={item._id}><button
+						key={item._id}
+						className="d-flex justify-content-between"><button
 							className="dropdown-item"
 							type="button">{item.properties.name}
-						</button></li>
+						</button>
+						<button 
+						className="btn btn-danger me-1"
+						onClick={()=>actions.delFav(item)}>
+							<i className="fa fa-trash"></i>
+							</button>
+							</li>
 						)
 						
 

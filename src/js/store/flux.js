@@ -110,7 +110,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-			}
+			},
+			delFav:  (delFav)=>{
+				
+				let newL = getStore().favoritos.filter((item)=>item._id!= delFav._id)
+					setStore({favoritos:newL})
+				
+
+		}
 
 		}
 	};
